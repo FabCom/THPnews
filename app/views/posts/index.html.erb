@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<div class="d-flex justify-content-center">
+  <h1>NEWS</h1>
+  <p class="ml-4"><%= link_to 'Créer', new_post_path, class: 'btn btn btn-primary btn-ms' %></p>
+</div>
+
+
+<div class="d-flex justify-content-start">
+  <% @posts.each do |post| %>
+    <div class="card rounded bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= post.title %></h5>
+        <p class="card-text font-italic">Rédigé par <%= post.user.first_name %> le <%= post.created_at.strftime("%m/%d/%Y") %></p>
+        <% if current_user %>
+          <%= link_to 'Voir', post, class: 'btn btn btn-outline-info btn-sm' %>
+  
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+

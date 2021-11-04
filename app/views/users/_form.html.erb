@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center mt-5" >
+  <div class="d-flex justify-content-center mt-5 border border-primary rounded  p-3" style="">
+      <%= simple_form_for(@user) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <%= f.input :first_name, label: "Prénom" %>
+        <%= f.input :last_name , label: "Nom" %>
+        <%= f.input :email , label: "Email" %>
+        <%= f.input :description , label: "Description" %>
+        <%= f.input :born_date, as: :string, label: 'Date de naissance (YYYY-MM-DD)' %>
+        <%= f.association :city , label: "Ville" %>
+        <%= f.input :password , label: "Mot de passe" %>
+      </div>
+
+      <div class="form-actions d-flex justify-content-center">
+         <%= f.button :submit , value: "Valider", class: 'btn btn-primary' %>
+      </div>
+      <% end %>
+  </div>
+</div>

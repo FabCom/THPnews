@@ -2,7 +2,9 @@
 
 <div class="d-flex justify-content-center">
   <h1>NEWS</h1>
-  <p class="ml-4"><%= link_to 'Créer', new_post_path, class: 'btn btn btn-primary btn-ms' %></p>
+  <%if current_user then%>
+    <p class="ml-4"><%= link_to 'Créer', new_post_path, class: 'btn btn btn-primary btn-ms' %></p>
+    <%end%>
 </div>
 
 

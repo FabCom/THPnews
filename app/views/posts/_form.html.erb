@@ -9,7 +9,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.button :submit %>
+    <%= f.hidden_field :user_id, value: if current_user then current_user.id end %>
+    <%= f.button :submit, class: "btn btn-primary btn-sm", label: "Ajouter" %>
   </div>
 <% end %>

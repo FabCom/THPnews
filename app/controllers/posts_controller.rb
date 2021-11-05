@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user, only: %i[ show edit update destroy ]
+  before_action :authenticate_user, only: %i[ new show edit update destroy ]
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
@@ -9,6 +9,10 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @comment = Comment.new
+    @comments = Comment.where(commentable_type: "Post", commentable_id: params[:id] )
+    session[:commentable_type] = "Post"
+    session[:commentable_id] = params[:id]
   end
 
   # GET /posts/new
@@ -23,9 +27,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-    puts "#" * 30
-    puts post_params
-    puts "#" * 30
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: "Post was successfully created." }

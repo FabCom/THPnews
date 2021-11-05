@@ -1,0 +1,18 @@
+<div style="min-width:40em">
+  <%= simple_form_for(@comment) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<h3>Ajouter un commentaire</h3>
+  <div class="form-inputs">
+    <%= f.input :content %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :redirect, value: request.path %>
+    <%= f.button :submit , class: "btn btn-primary btn-sm", label: "Ajouter" %>
+  </div>
+  <% end %>
+</div>
+

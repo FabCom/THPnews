@@ -9,6 +9,7 @@ class CitiesController < ApplicationController
 
   # GET /cities/1 or /cities/1.json
   def show
+    @users = User.where(city: params[:id])
   end
 
   # GET /cities/new

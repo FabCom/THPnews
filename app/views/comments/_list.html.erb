@@ -1,6 +1,6 @@
 <% @comments.each do |comment|%>
   <div class="m-2 border " style="min-width: 18em">
-    <p><%=link_to "Like", new_like_path(user: current_user, likeable_type: "Comment", likeable_id:comment.id, redirect: request.path), class: "btn btn-success btn-sm"%></p>
+    <p><%=if current_user != comment.user then link_to "Like", new_like_path(user: current_user, likeable_type: "Comment", likeable_id:comment.id, redirect: request.path), class: "btn btn-success btn-sm" end%></p>
     <p class="text-align-right font-italic"><%=comment.user.first_name%> le <%= comment.created_at.strftime("%m/%d/%Y") %></p>
     <p class="text-align-center"><%= comment.content %></p>
     <p>Nombre de like <%= comment.likes.length %></p>

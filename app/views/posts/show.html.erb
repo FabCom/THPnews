@@ -2,7 +2,11 @@
 
 <div class="d-flex justify-content-center" style="width:100%">
   <div class="card " style="min-width:60%">
-    <h2 class="display-2"><%= @post.title %> <%= if current_user == @post.user then link_to 'Edit', edit_post_path(@post), class:"btn btn-primary btn-sm" end %> <%= if current_user != @post.user then link_to "Like", new_like_path(user: current_user, likeable_type: "Post", likeable_id: @post.id, redirect: request.path), class: "btn btn-success btn-sm" end%></h2> 
+    <h2 class="display-2"><%= @post.title %> 
+    <% if current_user == @post.user then %>
+    <%= link_to 'Edit', edit_post_path(@post), class:"btn btn-primary btn-sm"%>
+    <%= link_to 'Delete', post_path(@post), method: :delete, class:"btn btn-danger btn-sm"%>
+    <% end %> <%= if current_user != @post.user then link_to "Like", new_like_path(user: current_user, likeable_type: "Post", likeable_id: @post.id, redirect: request.path), class: "btn btn-success btn-sm" end%></h2> 
     <p class="text-align-right font-italic">Rédigé par <%=@post.user.first_name%> le <%= @post.created_at.strftime("%m/%d/%Y") %></p>
     <p>Nombre de like <%= @post.likes.length %></p>
     <p class="card-body bg-info"><%= @post.content %></p>

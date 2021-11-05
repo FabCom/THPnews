@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user, only: %i[ new show edit update destroy ]
+  before_action :authenticate_user, only: %i[ new show edit update ]
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :authenticate_user_valid_for_posts_actions, only: %i[ edit update destroy ]
 
   # GET /posts or /posts.json
   def index

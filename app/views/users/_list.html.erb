@@ -2,7 +2,7 @@
 
 <div class="d-flex justify-content-center">
   <h1>UTILISATEURS</h1>
-  <p class="ml-4"><%= link_to 'Créer', new_user_path, class: 'btn btn btn-primary btn-ms' %></p>
+  <!--<p class="ml-4"><%= link_to 'Créer', new_user_path, class: 'btn btn btn-primary btn-ms' %></p> -->
 </div>
 
 <table class="table">
@@ -12,6 +12,9 @@
       <th>Prénom</th>
       <th>Nom</th>
       <th>Email</th>
+      <th>Nb NEWS</th>
+      <th>Nb COMMENTAIRES</th>
+      <th>Nb LIKES</th>
       <th>Description</th>
       <th>Date de naissance</th>
       <th>Ville</th>
@@ -26,6 +29,9 @@
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
+        <td><%= user.posts.length %></td>
+        <td><%= user.comments.length %></td>
+        <td><%= user.likes.length %></td>
         <td><%= user.description %></td>
         <td><%= user.born_date %></td>
         <td><%= user.city.name %></td>
